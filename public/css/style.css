@@ -675,7 +675,9 @@ hr.bold {
 	font-weight: 100;
 
 }
-
+.intro-content .img-margin-top {
+	margin-top: 100px;
+}
 
 .white-box {
 	background: rgba(255,255,255,.8);
