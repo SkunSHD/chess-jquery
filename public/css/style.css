@@ -1,5 +1,5 @@
 /* ==== Google font ==== */
-@import url('http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,600,700,800|Lato:100,400,300,700');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
 /* --- pe-icon-7-stroke --- */
 
 
@@ -676,7 +676,7 @@ hr.bold {
 
 }
 .intro-content .img-margin-top {
-	margin-top: 100px;
+	margin-top: 50px;
 }
 
 .white-box {
