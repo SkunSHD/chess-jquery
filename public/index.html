@@ -11,7 +11,6 @@
 	
     <!-- css -->
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
 	<link href="css/nivo-lightbox.css" rel="stylesheet" />
 	<link href="css/nivo-lightbox-theme/default/default.css" rel="stylesheet" type="text/css" />
@@ -27,13 +26,12 @@
 
 <div id="wrapper">
 	
-    <nav class="navbar navbar-custom" role="navigation">
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
         <div class="container navigation">
-		
             <div class="navbar-header page-scroll">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-                    <i class="fa fa-bars"></i>
-                </button>
+					<img src="img/icons/menu.png" alt="menu icon">
+				</button>
                 <a class="navbar-brand" href="index.html">
                     <img src="img/logo_s.jpg" alt="logo" />
                 </a>
@@ -45,10 +43,9 @@
 				<li><div id="cart"></div></li>
 				<li class="active"><a href="#intro">Главная</a></li>
 				<li><a href="#teacher">Репетитор</a> </li>
-				<li><a href="#messageMe">Записаться</a> </li>
-				<li><a href="gallery.html">Галерея</a> </li>
-				<li><a href="#contacts">Контакты</a> </li>
-
+                <li><a href="#contacts">Контакты</a> </li>
+                <li><a href="#messageMe">Записаться</a> </li>
+                <li><a href="gallery.html">Галерея</a> </li>
 			  </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -115,22 +112,23 @@
 				<div class="col-sm-6">
 					<div class="wow fadeInRight" data-wow-delay="0.3s">
 						<div class="features">
-							<i class="fa fa-check fa-2x circled bg-skin float-left"></i>
-							<h5>Веселая</h5>
+							<!--<i class="fa fa-check fa-2x circled bg-skin float-left"></i>-->
+							<img class="float-left margin-right" src="img/icons/checked.png" alt="">
+							<h5 class="padding-top">Веселая</h5>
 							<p>
 							Знает 1000 и 1 анекдот.
 							</p>
 						</div>
 						<div class="features">
-							<i class="fa fa-check fa-2x circled bg-skin float-left"></i>
-							<h5>Красивая</h5>
+							<img class="float-left margin-right" src="img/icons/checked.png" alt="">
+							<h5 class="padding-top">Красивая</h5>
 							<p>
 							(Фото слева)
 							</p>
 						</div>
 						<div class="features">
-							<i class="fa fa-check fa-2x circled bg-skin float-left"></i>
-							<h5>Умная</h5>
+							<img class="float-left margin-right" src="img/icons/checked.png" alt="">
+							<h5 class="padding-top">Умная</h5>
 							<p>
 							Умеет ловить рыбу!
 							</p>
@@ -163,16 +161,16 @@
 						</p>
 						<div class="divider-short marginbot-30 margintop-30"></div>
 						<div class="features">
-							<i class="fa fa-skype fa-2x circled bg-skin float-left"></i>
-							<h5>Уроки по скайпу</h5>
+							<img class="float-left margin-right" src="img/icons/skype.png" alt="">
+							<h5 class="padding-top">Уроки по скайпу</h5>
 						</div>
 						<div class="features">
-							<i class="fa fa-eye fa-2x circled bg-skin float-left"></i>
-							<h5>Проработка партий</h5>
+							<img class="float-left margin-right" src="img/icons/report.png" alt="">
+							<h5 class="padding-top">Разбор партий</h5>
 						</div>
 						<div class="features">
-							<i class="fa fa-flag fa-2x circled bg-skin float-left"></i>
-							<h5>Подготовка к соревнованиям</h5>
+							<img class="float-left margin-right" src="img/icons/strong.png" alt="">
+							<h5 class="padding-top">Подготовка к соревнованиям</h5>
 						</div>
 					</div>
 				</div>
@@ -225,16 +223,16 @@
 							<div class="row">
 								<div class="col-md-8">
 									<div class="wow fadeInUp" data-wow-delay="0.1s">
-									<div class="cta-text">
-									<h3>Остались вопросы?</h3>
-									<p>Пишите сюда ваш вопрос и контакт(телефон/email/ссылка в соцсеть) и я сразу отвечу!</p>
-									</div>
+                                        <div class="cta-text">
+                                            <h3>Остались вопросы?</h3>
+                                            <p>Пишите сюда вопрос и ваш обратный телефон/email/ссылка в соцсеть и я сразу отвечу!</p>
+                                        </div>
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="wow lightSpeedIn" data-wow-delay="0.1s">
 										<div class="cta-btn">
-										<a href="#messageMe" class="btn btn-skin btn-lg">Отправить сообщение репетитору</a>
+										    <a href="#messageMe" class="btn btn-skin btn-lg">Написать репетитору</a>
 										</div>
 									</div>
 								</div>
@@ -281,7 +279,7 @@
 	</footer>
 
 </div>
-<a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+<a href="#" class="scrollup"><img src="img/icons/up.png" alt=""></a>
 
 	<!-- Core JavaScript Files -->
     <script src="js/jquery.min.js"></script>	 

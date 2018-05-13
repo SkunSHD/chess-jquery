@@ -1,16 +1,16 @@
 /* ==== Google font ==== */
-@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
+@import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond');
 /* --- pe-icon-7-stroke --- */
 
 
 body {
     width: 100%;
     height: 100%;
-    font-family: 'Open Sans', sans-serif;
+	font-family: 'Cormorant Garamond', sans-serif;
 	font-weight: 300;
     color: #666;
     background: #fff;
-	font-size: 16px;
+	font-size: 18px;
     line-height: 1.6em;
 }
 
@@ -24,7 +24,7 @@ input,
 button,
 select,
 textarea {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Cormorant Garamond', sans-serif;
   font-size: inherit;
   line-height: inherit;
 }
@@ -35,6 +35,14 @@ textarea {
 
 .float-right{
 	float: right;
+}
+
+.margin-right {
+	margin-right: 25px;
+}
+
+.padding-top {
+	padding-top: 18px;
 }
 
 
@@ -68,7 +76,7 @@ h4,
 h5,
 h6 {
     margin: 0 0 40px;
-    font-family: 'Lato', sans-serif;
+    /*font-family: 'Lato', sans-serif;*/
     font-weight: 100;
 	color: #444;
 	line-height: 1.1em;
@@ -884,10 +892,11 @@ ul.social li {
 	height:32px;
     bottom:0px;
     right:20px;
-	background: #222;
--webkit-border-radius: 2px 2px 0 0;	
+	background: #828080;
+	z-index: 999;
+	-webkit-border-radius: 2px 2px 0 0;
 	-moz-border-radius: 2px 2px 0 0;	
-	border-radius:  2px 2px 0 0;	
+	border-radius:  2px 2px 0 0;
 }
 
 a.scrollup {
@@ -908,7 +917,6 @@ a.scrollup i:hover {
 }
 
 
-
 /* ===========================
 --- Elements
 ============================ */
@@ -918,7 +926,6 @@ a.scrollup i:hover {
   font-size: 16px;
   line-height: 1.6em;
 }
-
 
 /* --- scroll --- */
 
@@ -1079,6 +1086,7 @@ a.btn:focus{
 	
 	.navbar.navbar-custom.navbar-fixed-top {
 		background-color: #fff;
+
 	}
 	
 	.badge.custom-badge {
@@ -1088,14 +1096,14 @@ a.btn:focus{
 	.navbar-header button {
 		border-color: #ccc;
 		background-color: #eee;
-		padding: 5px 20px;
+		padding: 2px 10px;
 	}
 	.navbar-header i{
 		color: #666;
 	}
 	
 	.boxes3 {
-	width: 100%;
+		width: 100%;
 	}
 	.navbar-custom ul.nav li {
 		border-bottom: 1px solid #eee;
@@ -1153,8 +1161,6 @@ a.btn:focus{
 		text-align: center;
 		margin-top: 30px;
 	}
-	
-
 
 	.box {
 		padding: 45px;
