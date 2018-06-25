@@ -1,5 +1,6 @@
-/* ==== Google font ==== */
+/* ==== Google fonts ==== */
 @import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond');
+@import url('https://fonts.googleapis.com/css?family=Lobster');
 /* --- pe-icon-7-stroke --- */
 
 
@@ -133,6 +134,11 @@ p.ultra {
 	font-weight: 900;
 }
 
+.brand-font {
+	font-family: Lobster;
+	font-size: 29px;
+}
+
 .highlight-light {
 	background-color: rgba(255,255,255,.5);
 	padding: 20px;
@@ -201,14 +207,14 @@ Navigation
 ============= */
 
 .navbar-brand {
-  padding-top: 15px;
   margin-top: 5px;
+  padding-top: 15px;
   padding-bottom: 0;
 }
 
 .navbar-brand.reduce {
 	margin-top:0;
-  padding-top: 5px;
+  	padding-top: 5px;
 	padding-bottom: 5px;
  	-webkit-transition: all .4s ease-in-out;
     -moz-transition: all .4s ease-in-out;
@@ -1067,6 +1073,7 @@ a.btn:focus{
 		display: block;
 		margin: 0 auto;
 		width: 100%;
+		padding-top: 15px;
 	}
 	.intro-content {
 		padding:80px 0 0;
@@ -1177,6 +1184,7 @@ a.btn:focus{
 		text-align: center;
 		display: block;
 		margin: 0 auto;
+		padding-top: 5px;
 	}
 	
 	.intro-content {

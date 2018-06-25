@@ -8,7 +8,11 @@
     ],
     "rewrites": [
       {
-        "source": "**",
+        "source": "/sendemail",
+        "function": "sendemail"
+      },
+      {
+        "source": "/",
         "destination": "/index.html"
       }
     ]
