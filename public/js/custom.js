@@ -98,10 +98,13 @@
 
 	// Submit email
     $('.submit-email').click(function() {
-    	console.log('start')
-        $.get( "https://chess-lessons-kiev.firebaseapp.com/sendemail", function( data ) {
-            console.log( data );
-        });
+        $.post(
+        	"https://chess-lessons-kiev.firebaseapp.com/sendemail",
+			{ email: "pupkin@ya.com", pass: "123 123" },
+			'json'
+		).done(function (data) {
+			console.log('post resp', data)
+			});
 	})
 	
 })(jQuery);

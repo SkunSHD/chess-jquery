@@ -1,10 +1,14 @@
 var functions = require('firebase-functions');
 
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
+// CORS Express middleware to enable CORS Requests.
+var cors = require('cors')({
+    origin: true
+});
 
-exports.sendemail = functions.https.onRequest(function (request, response) {
-    // var newResp = JSON.stringify(request);
-    // response.status(200).send(newResp);
-    response.send('ok');
+// functions
+exports.sendemail = functions.https.onRequest(function (req, res) {
+    console.log("----|> req.body", req.body)
+    return cors(req, res, function() {
+        res.status(200).send(req.body);
+    });
 });
