@@ -7,7 +7,7 @@
     "start": "node server.js",
     "deploy-all": "firebase deploy",
     "func-deploy": "firebase deploy --only functions",
-    "serve": "firebase serve --only functions",
+    "func-debug": "firebase serve --only functions",
     "kill-3000": "sudo lsof -i :3000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

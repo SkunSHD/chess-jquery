@@ -11,34 +11,6 @@
 	);
 	wow.init();
 
-	// add animation
-    $.fn.extend({
-        animateCss: function(animationName, callback) {
-            var animationEnd = (function(el) {
-                var animations = {
-                    animation: 'animationend',
-                    OAnimation: 'oAnimationEnd',
-                    MozAnimation: 'mozAnimationEnd',
-                    WebkitAnimation: 'webkitAnimationEnd',
-                };
-
-                for (var t in animations) {
-                    if (el.style[t] !== undefined) {
-                        return animations[t];
-                    }
-                }
-            })(document.createElement('div'));
-
-            this.addClass('animated ' + animationName).one(animationEnd, function() {
-                $(this).removeClass('animated ' + animationName);
-
-                if (typeof callback === 'function') callback();
-            });
-
-            return this;
-        }
-    });
-
 	//jQuery to collapse the navbar on scroll
 	$(window).scroll(function() {
 		if ($(".navbar").offset().top > 50) {
@@ -124,15 +96,44 @@
 		errorMessage: 'The requested content cannot be loaded. Please try again later.' // Error message when content can't be loaded
 	});
 
+    // add animation
+    $.fn.extend({
+        animateCss: function(animationName, callback) {
+            var animationEnd = (function(el) {
+                var animations = {
+                    animation: 'animationend',
+                    OAnimation: 'oAnimationEnd',
+                    MozAnimation: 'mozAnimationEnd',
+                    WebkitAnimation: 'webkitAnimationEnd',
+                };
+
+                for (var t in animations) {
+                    if (el.style[t] !== undefined) {
+                        return animations[t];
+                    }
+                }
+            })(document.createElement('div'));
+
+            this.addClass('animated ' + animationName).one(animationEnd, function() {
+                $(this).removeClass('animated ' + animationName);
+
+                if (typeof callback === 'function') callback();
+            });
+
+            return this;
+        }
+    });
+
 	// Submit client message
-    function postClientMessage(data) {
+    function postClientMessage(data, callback) {
         $.post(
-            // "https://chess-lessons-kiev.firebaseapp.com/sendemail",
-            "http://localhost:5000/chess-lessons-kiev/us-central1/sendemail", // debug mode
+            "https://chess-lessons-kiev.firebaseapp.com/sendemail",
+            // "http://localhost:5000/chess-lessons-kiev/us-central1/sendemail", // debug mode
             data,
             'json'
         ).done(function (data) {
-            console.log('post ok! resp:', data)
+            // console.log('post ok! resp:', data);
+            callback();
         });
 	}
 
@@ -171,22 +172,48 @@
         return isValid;
 	}
 
-    $("form[name='sendEmail']").on('submit', function(event) {
+	function addAlert(submitBtn) {
+        var closeSpan = $('<span>&times;</span>', {
+            css: {
+                size: '30px'
+            }
+        }).attr('aria-hidden', 'true');
+        var closeBtn = $('<button/>', {
+            class: 'close'
+        }).attr({
+            'data-dismiss': 'alert',
+            'aria-label': 'Close'
+        });
+        var alert = $('<div/>',{
+            class: 'alert alert-success alert-dismissible',
+            text: 'Ваше сообщение успешно отправлено!'
+        }).attr({
+            role: 'alert'
+        });
+
+        closeBtn.append(closeSpan)
+        alert.append(closeBtn);
+        submitBtn.after(alert);
+        submitBtn.remove();
+	}
+
+    $('#sendMessageButton').on('click', function(event) {
         event.preventDefault();
-
-        var formData = $(this).serializeArray();
-
+        var formData = $("form[name='sendEmail']").serializeArray();
         var isValid = validateForm(formData);
         if(!isValid) return;
+
+        var $submitBtn = $(this).button('loading');
 
         var mappedFormData = {};
         formData.forEach(function(obj) {
             mappedFormData[obj.name] = obj.value;
 		});
 
-        postClientMessage(mappedFormData);
+        postClientMessage(mappedFormData, function() {
+            addAlert($submitBtn);
+        });
     });
-
 
 
 })(jQuery);
