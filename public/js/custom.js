@@ -96,17 +96,31 @@
 		errorMessage: 'The requested content cannot be loaded. Please try again later.' // Error message when content can't be loaded
 	});
 
-	// Submit email
-    $('.submit-email').click(function() {
+	// Submit client message
+    function postClientMessage(data) {
         $.post(
-        	"https://chess-lessons-kiev.firebaseapp.com/sendemail",
-			{ email: "pupkin@ya.com", pass: "123 123" },
-			'json'
-		).done(function (data) {
-			console.log('post resp', data)
-			});
-	})
-	
+            // "https://chess-lessons-kiev.firebaseapp.com/sendemail",
+            "http://localhost:5000/chess-lessons-kiev/us-central1/sendemail", // debug mode
+            data,
+            'json'
+        ).done(function (data) {
+            console.log('post ok! resp:', data)
+        });
+	}
+
+    $("form[name='sendEmail']").on('submit', function(event) {
+    	var formData = $(this).serializeArray();
+        var mappedFormData = {};
+
+        formData.forEach(function(obj) {
+            mappedFormData[obj.name] = obj.value;
+		});
+
+        postClientMessage(mappedFormData);
+        event.preventDefault();
+    });
+
+
 })(jQuery);
 $(window).load(function() {
 	$(".loader").delay(100).fadeOut();
