@@ -137,7 +137,7 @@
 	}
 
 	function validateForm(formFields) {
-        formFields.forEach(function(formField) {
+        var isValid = formFields.every(function(formField) {
         	if(!formField.value.length) {
         		var warningEl = $('<span/>', {
         			text: 'Это поле обязательное для заполнения',
@@ -163,8 +163,12 @@
 					}
                     warningEl.remove();
                 });
+                return false;
             }
-		})
+            return true;
+        });
+
+        return isValid;
 	}
 
     $("form[name='sendEmail']").on('submit', function(event) {
@@ -180,7 +184,7 @@
             mappedFormData[obj.name] = obj.value;
 		});
 
-        // postClientMessage(mappedFormData);
+        postClientMessage(mappedFormData);
     });
 
 
