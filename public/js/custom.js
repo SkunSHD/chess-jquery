@@ -11,6 +11,34 @@
 	);
 	wow.init();
 
+	// add animation
+    $.fn.extend({
+        animateCss: function(animationName, callback) {
+            var animationEnd = (function(el) {
+                var animations = {
+                    animation: 'animationend',
+                    OAnimation: 'oAnimationEnd',
+                    MozAnimation: 'mozAnimationEnd',
+                    WebkitAnimation: 'webkitAnimationEnd',
+                };
+
+                for (var t in animations) {
+                    if (el.style[t] !== undefined) {
+                        return animations[t];
+                    }
+                }
+            })(document.createElement('div'));
+
+            this.addClass('animated ' + animationName).one(animationEnd, function() {
+                $(this).removeClass('animated ' + animationName);
+
+                if (typeof callback === 'function') callback();
+            });
+
+            return this;
+        }
+    });
+
 	//jQuery to collapse the navbar on scroll
 	$(window).scroll(function() {
 		if ($(".navbar").offset().top > 50) {
@@ -108,17 +136,53 @@
         });
 	}
 
-    $("form[name='sendEmail']").on('submit', function(event) {
-    	var formData = $(this).serializeArray();
-        var mappedFormData = {};
+	function validateForm(formFields) {
+        formFields.forEach(function(formField) {
+        	if(!formField.value.length) {
+        		var warningEl = $('<span/>', {
+        			text: 'Это поле обязательное для заполнения',
+					class: "warning-" + formField.name,
+					css: { color: 'darkRed' }
+				}).animateCss('flipInX');
 
+                var input;
+                if(formField.name === 'contact') {
+                    input = $("input[name='contact']");
+				} else {
+                    input = $("textarea[name='message']");
+				}
+
+				if(!$(".warning-" + formField.name).length) {
+                    input.css('border-color', 'rgb(255, 0, 0)').after(warningEl);
+                }
+
+				// clean validation
+                input.keypress(function() {
+                    if(input.css('border-color') === 'rgb(255, 0, 0)') {
+                        input.css('border-color', '');
+					}
+                    warningEl.remove();
+                });
+            }
+		})
+	}
+
+    $("form[name='sendEmail']").on('submit', function(event) {
+        event.preventDefault();
+
+        var formData = $(this).serializeArray();
+
+        var isValid = validateForm(formData);
+        if(!isValid) return;
+
+        var mappedFormData = {};
         formData.forEach(function(obj) {
             mappedFormData[obj.name] = obj.value;
 		});
 
-        postClientMessage(mappedFormData);
-        event.preventDefault();
+        // postClientMessage(mappedFormData);
     });
+
 
 
 })(jQuery);
